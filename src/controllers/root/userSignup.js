@@ -7,6 +7,7 @@ const userSignup = async (req, res) => {
         const query = `INSERT INTO users (name, email, password) VALUES (:name, :email, :password)`;
         const result = await connection.execute(query, [req.body.name, req.body.email, req.body.password]);
         await connection.commit();
+        console.log(result);
         res.status(200).send({ message: 'User registered successfully' });
       } catch (err) {
         console.error(err);
