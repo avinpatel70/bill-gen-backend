@@ -1,10 +1,11 @@
 import express from 'express';
-import getRoot from '../controllers/root/getRoot';
-import postRoot from '../controllers/root/postRoot';
+import validateUser from '../controllers/root/validateUser';
+import userSignup from '../controllers/root/userSignup';
 
 const root = express.Router()
 
-root.get('/', getRoot)
-root.post('/', postRoot)
+//console.log(pool);
+root.get('/validateUser', validateUser)
+//root.post('/userSignup', userSignup(pool))
 
 export default root

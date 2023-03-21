@@ -3,11 +3,13 @@ import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import config from './config';
+import connectToDB from './db';
 import errorHandler from './middleware/errorHandler';
 import fourOhFour from './middleware/fourOhFour';
 import root from './routes/root';
 
 const app = express()
+connectToDB();
 
 // Apply most middleware first
 app.use(express.json())
@@ -19,6 +21,7 @@ app.use(helmet())
 app.use(morgan('tiny'))
 
 // Apply routes before error handling
+
 app.use('/', root)
 
 // Apply error handling last
